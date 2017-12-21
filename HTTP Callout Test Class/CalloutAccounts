@@ -1,0 +1,14 @@
+public class CalloutAccounts {
+    @AuraEnabled
+    public static Map <String, Object> getAccounts() {
+        HttpRequest req = new HttpRequest();
+        req.setEndpoint('https://Your-InstanceUrl/services/data/v24.0/sobjects/Account');  
+		//  Example		req.setEndpoint('https://CompanyName-dev-ed.my.salesforce.com/services/data/v24.0/sobjects/Account');
+        req.setMethod('GET');
+        Http h = new Http();
+        HttpResponse res = h.send(req);
+        String jsonData = res.getBody();
+          Map < String, Object> accounts = (Map < String, Object> )JSON.deserializeUntyped(jsonData);
+        return accounts;
+    }
+}
