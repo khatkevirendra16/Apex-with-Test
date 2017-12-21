@@ -1,0 +1,9 @@
+@isTest
+public class CalloutAccountsTest{
+    public static testmethod void testCalloutAccount() {
+        HttpRequestMock fakeResponse = new HttpRequestMock(200,'OK','{"Name": "sForceTest1"}',null);
+        Test.setMock(HttpCalloutMock.class, fakeResponse);
+        CalloutAccounts.getAccounts();
+        //System.assertEquals();
+    }
+}
